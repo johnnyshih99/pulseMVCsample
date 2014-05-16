@@ -1,0 +1,69 @@
+﻿@model PulseTemp.Models.Template
+@{
+    ViewBag.Title = "Home Page"; 
+}
+
+<h3><b>Select Your Template</b></h3>
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+         {
+             Text = "Template 1",
+             Value = "1"
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "Template 2",
+             Value = "2",
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "Template 3",
+             Value = "3"
+         });
+}
+
+
+@Html.DropDownList("tNumber", new SelectList(listItems, "Value", "Text"))
+
+<div id="partialPlaceHolder">@Html.Partial("_Templates")</div>
+
+@section scripts{
+    
+    <script>
+        $("#tNumber").change(function () {
+
+            /* Get the selected value of dropdownlist */
+            var selectedID = $(this).val();
+
+            /* Request the partial view with .get request. */
+            $.get('/Home/GetPartTemp/' + selectedID, function (data) {
+
+                /* data is the pure html returned from action method, load it to your page */
+                $('#partialPlaceHolder').html(data);
+                /* little fade in effect */
+                $('#partialPlaceHolder').fadeIn('fast');
+            });
+        });
+
+        $('#fName').keyup(function () {
+            $('#p_fName').html($('#fName').val());
+        });
+        $('#lName').keyup(function () {
+            $('#p_lName').html($('#lName').val());
+        });
+        $('#hometown').keyup(function () {
+            $('#p_hometown').html($('#hometown').val());
+        });
+        $('#spouse').keyup(function () {
+            $('#p_spouse').html($('#spouse').val());
+        });
+        $('#kid1').keyup(function () {
+            $('#p_kid1').html($('#kid1').val());
+        });
+        $('#kid2').keyup(function () {
+            $('#p_kid2').html($('#kid2').val());
+        });
+    </script>
+}

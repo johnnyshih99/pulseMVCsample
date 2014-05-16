@@ -1,0 +1,98 @@
+﻿@model PulseTemp.Models.Template
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Template</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.addr, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.addr)
+                @Html.ValidationMessageFor(model => model.addr)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fName)
+                @Html.ValidationMessageFor(model => model.fName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.lName)
+                @Html.ValidationMessageFor(model => model.lName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hometown, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.hometown)
+                @Html.ValidationMessageFor(model => model.hometown)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.spouse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spouse)
+                @Html.ValidationMessageFor(model => model.spouse)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.kid1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.kid1)
+                @Html.ValidationMessageFor(model => model.kid1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.kid2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.kid2)
+                @Html.ValidationMessageFor(model => model.kid2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

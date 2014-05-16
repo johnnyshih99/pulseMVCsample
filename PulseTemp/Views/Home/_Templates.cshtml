@@ -1,0 +1,171 @@
+﻿@model PulseTemp.Models.Template
+@if (@ViewData["temp"] == null) { ViewData["temp"] = 1; }
+
+@using (Html.BeginForm("Create", "Templates")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h3><b>Template @ViewData["temp"]</b></h3>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @if ((int)ViewData["Temp"] == 1)
+        {
+            <div class="form-group">
+            @Html.LabelFor(model => model.fName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fName)
+                @Html.ValidationMessageFor(model => model.fName)
+            </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.lName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.lName)
+                    @Html.ValidationMessageFor(model => model.lName)
+                </div>
+            </div>
+            
+            <h3><b>Preview</b></h3>
+            <div class="form-group">
+                @Html.LabelFor(model => model.fName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div id="p_fName"></div>
+            </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.lName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div id="p_lName"></div>
+            </div>
+            </div>
+        }
+        
+        @if ((int)ViewData["Temp"] == 2)
+        {
+            <div class="form-group">
+            @Html.LabelFor(model => model.hometown, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.hometown)
+                @Html.ValidationMessageFor(model => model.hometown)
+            </div>
+            </div>
+            
+            <h3><b>Preview</b></h3>
+            <div class="form-group">
+                @Html.LabelFor(model => model.hometown, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div id="p_hometown"></div>
+            </div>
+            </div>
+        }
+        
+        @if ((int)ViewData["Temp"] == 3)
+        { 
+            <div class="form-group">
+            @Html.LabelFor(model => model.spouse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.spouse)
+                @Html.ValidationMessageFor(model => model.spouse)
+            </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.kid1, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.kid1)
+                    @Html.ValidationMessageFor(model => model.kid1)
+                </div>
+            </div>
+            
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.kid2, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.kid2)
+                    @Html.ValidationMessageFor(model => model.kid2)
+                </div>
+            </div>
+            
+            <h3><b>Preview</b></h3>
+            <div class="form-group">
+                @Html.LabelFor(model => model.spouse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div id="p_spouse"></div>
+            </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.kid1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div id="p_kid1"></div>
+            </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.kid2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div id="p_kid2"></div>
+            </div>
+            </div>
+        }
+        
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.addr, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.addr)
+                @Html.ValidationMessageFor(model => model.addr)
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@Scripts.Render("~/bundles/jquery")
+<script>        $('#fName').keyup(function () {
+            $('#p_fName').html($('#fName').val());
+        });
+    $('#lName').keyup(function () {
+        $('#p_lName').html($('#lName').val());
+    });
+    $('#hometown').keyup(function () {
+        $('#p_hometown').html($('#hometown').val());
+    });
+    $('#spouse').keyup(function () {
+        $('#p_spouse').html($('#spouse').val());
+    });
+    $('#kid1').keyup(function () {
+        $('#p_kid1').html($('#kid1').val());
+    });
+    $('#kid2').keyup(function () {
+        $('#p_kid2').html($('#kid2').val());
+    });</script>
